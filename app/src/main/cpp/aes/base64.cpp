@@ -1,4 +1,5 @@
 #include "base64.h"
+#include "../common.h"
 #include <cmath>
 #include <cstdio>
 #include <cstring>
@@ -8,8 +9,8 @@ char *base64Encode(const unsigned char *message, const size_t length) {
     char *b64text = (char *) malloc(encodedSize + 1);
 
     if (b64text == nullptr) {
-        fprintf(stderr, "Failed to allocate memory\n");
-        exit(1);
+        LOGW("Failed to allocate memory\n");
+        return nullptr;
     }
 
     BIO *b64 = BIO_new(BIO_f_base64());
@@ -36,8 +37,8 @@ size_t base64Decode(const char *b64message, const size_t length, unsigned char *
     *buffer = (unsigned char *) malloc(decodedLength + 1);
 
     if (*buffer == nullptr) {
-        fprintf(stderr, "Failed to allocate memory\n");
-        exit(1);
+        LOGW("Failed to allocate memory\n");
+        return EXIT_FAILURE;
     }
 
     BIO *bio = BIO_new_mem_buf(b64message, -1);

@@ -73,7 +73,8 @@ size_t CbdAes::aesEncrypt(const unsigned char *message,
     }
     encryptedMessageLength += blockLength;
 
-    if (!EVP_EncryptFinal_ex(aesEncryptContext, *encryptedMessage + encryptedMessageLength, (int *) &blockLength)) {
+    if (!EVP_EncryptFinal_ex(aesEncryptContext, *encryptedMessage + encryptedMessageLength,
+                             (int *) &blockLength)) {
         return FAILURE;
     }
 
@@ -97,13 +98,16 @@ size_t CbdAes::aesDecrypt(unsigned char *encryptedMessage,
         return FAILURE;
     }
 
-    if (!EVP_DecryptUpdate(aesDecryptContext, (unsigned char *) *decryptedMessage, (int *) &blockLength,
+    if (!EVP_DecryptUpdate(aesDecryptContext,
+                           (unsigned char *) *decryptedMessage,
+                           (int *) &blockLength,
                            encryptedMessage, (int) encryptedMessageLength)) {
         return FAILURE;
     }
     decryptedMessageLength += blockLength;
 
-    if (!EVP_DecryptFinal_ex(aesDecryptContext, (unsigned char *) *decryptedMessage + decryptedMessageLength,
+    if (!EVP_DecryptFinal_ex(aesDecryptContext,
+                             (unsigned char *) *decryptedMessage + decryptedMessageLength,
                              (int *) &blockLength)) {
         return FAILURE;
     }
@@ -118,8 +122,12 @@ CbdAes::~CbdAes() {
     aesEncryptContext = nullptr;
     aesDecryptContext = nullptr;
 
-    free(mAesKey);
-    free(mAesIv);
-    mAesKey = nullptr;
-    mAesIv = nullptr;
+    if (mAesKey != nullptr) {
+        free(mAesKey);
+        mAesKey = nullptr;
+    }
+    if (mAesIv != nullptr) {
+        free(mAesIv);
+        mAesIv = nullptr;
+    }
 }
