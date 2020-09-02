@@ -16,15 +16,19 @@ extern "C" {
 /**
  * nativeEncrypt
  */
-jstring JNI_CRYPTO(nativeEncrypt)(JNIEnv *env, jclass thiz,
-                                  jstring jKey, jstring jContent);
+extern "C"
+JNIEXPORT jstring JNICALL
+JNI_CRYPTO(nativeEncrypt)(JNIEnv *env, jclass,
+                          jstring jKey, jstring jContent);
 
 
 /**
  * nativeVerify
  */
-jboolean JNI_CRYPTO (nativeVerify)(JNIEnv *env, jclass thiz,
-                                   jstring jKey, jstring jContent, jbyteArray jSignBytes);
+extern "C"
+JNIEXPORT jboolean JNICALL
+JNI_CRYPTO (nativeVerify)(JNIEnv *env, jclass,
+                          jstring jKey, jstring jContent, jbyteArray jSignBytes);
 
 
 #ifdef __cplusplus

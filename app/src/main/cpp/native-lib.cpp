@@ -59,10 +59,7 @@ Java_cn_areful_openssl_Encryption_stringFromJNI(
 
 extern "C"
 JNIEXPORT jstring JNICALL
-Java_cn_areful_openssl_Encryption_encode(JNIEnv *env,
-                                         jclass,
-                                         jstring content,
-                                         jint type) {
+JNI_CRYPTO(encode)(JNIEnv *env, jclass, jstring content, jint type) {
     CbdAes aes;
     if (setKeyIv(aes, type)) {
         return env->NewStringUTF("");
@@ -96,10 +93,7 @@ Java_cn_areful_openssl_Encryption_encode(JNIEnv *env,
 
 extern "C"
 JNIEXPORT jstring JNICALL
-Java_cn_areful_openssl_Encryption_decode(JNIEnv *env,
-                                           jclass,
-                                           jstring content,
-                                           jint type) {
+JNI_CRYPTO(decode)(JNIEnv *env, jclass, jstring content, jint type) {
     CbdAes aes;
     if (setKeyIv(aes, type)) {
         return env->NewStringUTF("");

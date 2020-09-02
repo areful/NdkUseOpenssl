@@ -9,6 +9,16 @@
 #include <string>
 #include <vector>
 
+#define JNI_CRYPTO(x) Java_cn_areful_openssl_Encryption_##x
+
+extern "C"
+JNIEXPORT jstring JNICALL
+JNI_CRYPTO(encode)(JNIEnv *env, jclass, jstring content, jint type);
+
+extern "C"
+JNIEXPORT jstring JNICALL
+JNI_CRYPTO(decode)(JNIEnv *env, jclass, jstring content, jint type);
+
 // encrypt by public key file
 std::vector<char> EncryptByPubkeyFile(const std::string &message, const std::string &pub_filename);
 
