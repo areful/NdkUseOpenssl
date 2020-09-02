@@ -29,6 +29,8 @@ add_library(native-lib SHARED
         native-lib.h
         rsa_lib.cpp
         rsa_lib.h
+        utils.cpp
+        utils.h
         common.h
         ${AES_SOURCE}
         ${B64_SOURCE}

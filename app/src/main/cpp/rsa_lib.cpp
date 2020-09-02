@@ -5,13 +5,10 @@
 #include "rsa_lib.h"
 #include "rsa/rsa.h"
 #include "b64/b64.h"
+#include "utils.h"
 #include<string>
 
 using namespace std;
-
-static char *vector_to_p_char(const vector<char> &chars);
-
-static char *jByteArrayToChars(JNIEnv *env, jbyteArray jByteArray);
 
 /**
  * nativeEncrypt
@@ -60,22 +57,4 @@ jboolean JNI_CRYPTO (nativeVerify)(JNIEnv *env, jclass,
     delete[] content;
     delete[] signBytes;
     return result;
-}
-
-static char *vector_to_p_char(const vector<char> &chars) {
-    char *buffer = new char[chars.size()];
-    std::copy(chars.begin(), chars.end(), buffer);
-    return buffer;
-}
-
-static char *jByteArrayToChars(JNIEnv *env, jbyteArray jByteArray) {
-    jbyte *bytes = env->GetByteArrayElements(jByteArray, nullptr);
-    int chars_len = env->GetArrayLength(jByteArray);
-    char *chars = new char[chars_len + 1];
-    memset(chars, 0, chars_len + 1);
-    memcpy(chars, bytes, chars_len);
-    chars[chars_len] = 0;
-
-    env->ReleaseByteArrayElements(jByteArray, bytes, 0);
-    return chars;
 }
