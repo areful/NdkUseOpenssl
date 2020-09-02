@@ -27,6 +27,8 @@ aux_source_directory(rsa RSA_SOURCE)
 add_library(native-lib SHARED
         native-lib.cpp
         native-lib.h
+        rsa_lib.cpp
+        rsa_lib.h
         common.h
         ${AES_SOURCE}
         ${B64_SOURCE}

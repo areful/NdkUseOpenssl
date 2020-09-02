@@ -43,7 +43,7 @@ const unsigned char IV_TRACK[AES_BLOCK_SIZE] = {
 };
 
 extern "C" JNIEXPORT jstring JNICALL
-Java_com_chebada_encrypt_Encryption_stringFromJNI(
+Java_cn_areful_openssl_Encryption_stringFromJNI(
         JNIEnv *env,
         jclass /* this */) {
     std::string hello = "Hello from C++";
@@ -59,10 +59,10 @@ Java_com_chebada_encrypt_Encryption_stringFromJNI(
 
 extern "C"
 JNIEXPORT jstring JNICALL
-Java_com_chebada_encrypt_Encryption_encode(JNIEnv *env,
-                                           jclass,
-                                           jstring content,
-                                           jint type) {
+Java_cn_areful_openssl_Encryption_encode(JNIEnv *env,
+                                         jclass,
+                                         jstring content,
+                                         jint type) {
     CbdAes aes;
     if (setKeyIv(aes, type)) {
         return env->NewStringUTF("");
@@ -96,7 +96,7 @@ Java_com_chebada_encrypt_Encryption_encode(JNIEnv *env,
 
 extern "C"
 JNIEXPORT jstring JNICALL
-Java_com_chebada_encrypt_Encryption_decode(JNIEnv *env,
+Java_cn_areful_openssl_Encryption_decode(JNIEnv *env,
                                            jclass,
                                            jstring content,
                                            jint type) {

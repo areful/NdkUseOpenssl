@@ -1,4 +1,4 @@
-package com.chebada.encrypt;
+package cn.areful.openssl;
 
 public class Encryption {
     static {
