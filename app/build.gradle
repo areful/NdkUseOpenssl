@@ -61,3 +61,11 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
+
+// rename output .apk file
+android.applicationVariants.all { variant ->
+    variant.outputs.all {
+        def fileName = "NdkUseOpenssl.apk"
+        outputFileName = fileName
+    }
+}

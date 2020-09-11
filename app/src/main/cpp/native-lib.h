@@ -13,6 +13,10 @@
 
 extern "C"
 JNIEXPORT jstring JNICALL
+JNI_CRYPTO(stringFromJNI)(JNIEnv *env, jclass);
+
+extern "C"
+JNIEXPORT jstring JNICALL
 JNI_CRYPTO(encode)(JNIEnv *env, jclass, jstring content, jint type);
 
 extern "C"

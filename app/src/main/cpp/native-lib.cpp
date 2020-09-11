@@ -42,10 +42,9 @@ const unsigned char IV_TRACK[AES_BLOCK_SIZE] = {
         0x01, 0x23, 0x45, 0x67, 0x89, 0xAB, 0xCD, 0xEF,
 };
 
-extern "C" JNIEXPORT jstring JNICALL
-Java_cn_areful_openssl_Encryption_stringFromJNI(
-        JNIEnv *env,
-        jclass /* this */) {
+extern "C"
+JNIEXPORT jstring JNICALL
+JNI_CRYPTO(stringFromJNI)(JNIEnv *env, jclass) {
     std::string hello = "Hello from C++";
 
     test_base64();
