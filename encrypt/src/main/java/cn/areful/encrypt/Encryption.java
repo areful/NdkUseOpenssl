@@ -1,4 +1,4 @@
-package cn.areful.openssl;
+package cn.areful.encrypt;
 
 public class Encryption {
     static {

@@ -9,7 +9,7 @@
 #include <string>
 #include <vector>
 
-#define JNI_CRYPTO(x) Java_cn_areful_openssl_Encryption_##x
+#define JNI_CRYPTO(x) Java_cn_areful_encrypt_Encryption_##x
 
 extern "C"
 JNIEXPORT jstring JNICALL

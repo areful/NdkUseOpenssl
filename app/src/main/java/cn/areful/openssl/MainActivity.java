@@ -7,6 +7,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import cn.areful.encrypt.Encryption;
+import cn.areful.encrypt.PaymentSecureManager;
+
 /**
  * created by areful, 2020/7/24.<p>
  * Sample use of Openssl with NDK.

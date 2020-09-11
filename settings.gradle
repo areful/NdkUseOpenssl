@@ -1,2 +1,4 @@
+include ':encrypt'
 include ':app'
+include ':encrypt'
 rootProject.name = "NdkUseOpenssl"

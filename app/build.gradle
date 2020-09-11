@@ -12,16 +12,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        externalNativeBuild {
-            cmake {
-                cppFlags "-std=c++11 -frtti -fexceptions"
-                arguments '-DANDROID_STL=c++_shared'
-            }
-            ndk {
-                stl = "c++_shared"
-                abiFilters 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'
-            }
-        }
     }
 
     buildTypes {
@@ -31,22 +21,6 @@ android {
         }
     }
 
-    sourceSets {
-        main {
-            jniLibs.srcDirs = ['${PROJECT_SOURCE_DIR}/libs']
-        }
-    }
-
-    packagingOptions {
-        pickFirst '**/*.so'
-    }
-
-    externalNativeBuild {
-        cmake {
-            path "src/main/cpp/CMakeLists.txt"
-            version "3.10.2"
-        }
-    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -60,6 +34,8 @@ dependencies {
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation project(path: ':encrypt')
 }
 
 // rename output .apk file

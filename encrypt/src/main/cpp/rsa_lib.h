@@ -10,7 +10,7 @@ extern "C" {
 #endif
 
 #include <jni.h>
-#define JNI_CRYPTO(x) Java_cn_areful_openssl_PaymentSecureManager_##x
+#define JNI_CRYPTO(x) Java_cn_areful_encrypt_PaymentSecureManager_##x
 
 
 /**
