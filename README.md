@@ -1,22 +1,24 @@
 # NdkUseOpenssl
-## How to build Openssl .so library:
-### Download Openssl source and run configure script for Android platform, then compile source code. This step makes .so files for Android.
-I compile source code on Ubuntu 18.04 amd64 Desktop System, Use command below:
-```
-    export ANDROID_NDK=/home/gj/android-ndk-r19c
-    export PATH=/home/gj/android-ndk-r19c/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH
-    ./Configure android-arm shared
-    make SHLIB_EXT=.so -j8
-```
 
-after build we can copy and save the output .so file.
+#### Upgrade openssl to 3.3.0-dev.
 
-If want to build .so for other ABIs, you can run 'make clean' and rerun '.Configure' command with ABI argument like this:
-```
-	make clean
-    ./Configure android-arm64 shared
-    make SHLIB_EXT=.so -j8
-```
+## App build environment:
 
-I built .so files for arm, arm64, armeabi, x86, x86_64 ABI（under directory 'cpp/libs'）, and copy armeabi directory as armeabi-v7a,
-arm64 directory as arm64-v8a, for Android Studio not support armeabi, arm64 ABI any more. See build.gradle file, section 'abiFilters'.
+Android Studio Hedgehog | 2023.1.1 Patch 2
+JDK 11,  `sourceCompatibility JavaVersion.VERSION_1_8`
+gradle 6.5-all
+
+## * .so library build environment:
+
+Ubuntu 22.04.2 desktop
+android-ndk-r20b-linux-x86_64
+openssl source code (current version 3.3.0-dev)
+
+#### How to compile *.so:
+
+```
+./make_openssl.sh 21 armeabi-v7a
+./make_openssl.sh 21 arm64-v8a
+./make_openssl.sh 21 x86
+./make_openssl.sh 21 x86_64
+```
