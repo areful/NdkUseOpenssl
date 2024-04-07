@@ -3,9 +3,9 @@
 #### Upgrade openssl to 3.3.0-dev.
 
 ## App build environment:
-###### Android Studio Hedgehog | 2023.1.1 Patch 2
-###### JDK 11,  `sourceCompatibility JavaVersion.VERSION_1_8`
-###### gradle 6.5-all
+###### Android Studio Iguana | 2023.2.1 Patch 1
+###### JDK 17,  `sourceCompatibility JavaVersion.VERSION_11`
+###### gradle 7.5-all
 
 ## * .so library build environment:
 ###### Ubuntu 22.04.2 desktop

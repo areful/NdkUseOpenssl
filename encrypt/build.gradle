@@ -1,8 +1,8 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdk 29
-    buildToolsVersion '29.0.2'
+    compileSdk 34
+    ndkVersion '23.1.7779620'
 
     defaultConfig {
         minSdkVersion 14
@@ -50,19 +50,29 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 }
 
 //编译时打开以下注释
 buildscript {
     repositories {
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' } // mavenCentral镜像仓库地址
-        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' } //jcenter镜像仓库地址
-        maven { url 'http://maven.aliyun.com/nexus/content/repositories/google' } // google镜像仓库地址
-        jcenter()
+        maven {
+            url 'https://maven.aliyun.com/repository/gradle-plugin'
+            allowInsecureProtocol = true
+        }
+        maven {
+            url 'https://maven.aliyun.com/repository/google'
+            allowInsecureProtocol = true
+        }
+        maven {
+            url 'https://maven.aliyun.com/repository/jcenter'
+            allowInsecureProtocol = true
+        }
+        maven { url 'https://jitpack.io' }
         google()
+        mavenCentral()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.0.1'
@@ -70,18 +80,29 @@ buildscript {
 }
 
 repositories {
-    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' } // mavenCentral镜像仓库地址
-    maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' } //jcenter镜像仓库地址
-    maven { url 'http://maven.aliyun.com/nexus/content/repositories/google' } // google镜像仓库地址
+    maven {
+        url 'https://maven.aliyun.com/repository/gradle-plugin'
+        allowInsecureProtocol = true
+    }
+    maven {
+        url 'https://maven.aliyun.com/repository/google'
+        allowInsecureProtocol = true
+    }
+    maven {
+        url 'https://maven.aliyun.com/repository/jcenter'
+        allowInsecureProtocol = true
+    }
+    maven { url 'https://jitpack.io' }
     google()
+    mavenCentral()
 }
 //编译时打开以上注释
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
 }
